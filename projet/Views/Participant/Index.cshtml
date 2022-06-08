@@ -1,0 +1,91 @@
+﻿@model IEnumerable<projet.Models.Participant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body style="background-color: snow;">
+
+    <h1>Participants</h1>
+
+    <p>
+        <a asp-action="Create">Insription</a>
+    </p>
+    <a asp-action="Index" asp-controller="Participant"> All Participants</a>
+    <form class="form-inline my-2 my-lg-0" asp-action="Search" asp-controller="Participant">
+        <p>
+            <input size="30" placeholder="tapez un Nom" type="search" name="name" />
+            <select asp-items="ViewBag.FormationID" name="formationid" size=1.5 style="width:300px ; height:30px"></select>
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Recherche</button>
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Formation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParticipantName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParticipantNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Formation.FormationID)
+                    </td>
+                    <td>
+                        <a style="color:chartreuse" asp-action="Edit" asp-route-id="@item.ParticipantId">Edit</a> |
+                        <a style="color:blueviolet" asp-action="Details" asp-route-id="@item.ParticipantId">Details</a> |
+                        <a style="color:crimson" asp-action="Delete" asp-route-id="@item.ParticipantId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="~/images/131px-C_Sharp_wordmark.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/131px-HTML5_logo_and_wordmark.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/Adobe_Photoshop_CC_icon.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/Bootstrap_logo.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/langfr-130px-CSS3_logo_and_wordmark.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/langfr-220px-.NET_Logo.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/langfr-220px-Laravel.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/langfr-280px-Cisco_logo_blue_2016.svg.png" class="d-block w-100">
+            </div>
+            <div class="col">
+                <img src="~/images/PHP-logo.svg.png" class="d-block w-100">
+            </div>
+        </div>
+    </div>
+</body>
